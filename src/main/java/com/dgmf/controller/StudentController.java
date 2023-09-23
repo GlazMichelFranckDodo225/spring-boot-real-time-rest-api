@@ -2,6 +2,7 @@ package com.dgmf.controller;
 
 import com.dgmf.bean.Student;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -48,5 +49,25 @@ public class StudentController {
         students.add(student3);
 
         return students;
+    }
+
+    // REST API with Path Variable
+    // HTTP GET Request : http://localhost:8080/students/1/John/Doe
+    // {id}, {first-name} and {last-name} ==> URI Template variables
+    @GetMapping("/students/{id}/{first-name}/{last-name}")
+
+    //
+    public Student studentPathVariable(
+            @PathVariable("id") Long studentId,
+            @PathVariable("first-name") String studentFirstName,
+            @PathVariable("last-name") String studentLastName
+    ) {
+        Student student = Student.builder()
+                .id(studentId)
+                .firstName(studentFirstName)
+                .lastName(studentLastName)
+                .build();
+
+        return student;
     }
 }

@@ -1,10 +1,8 @@
 package com.dgmf.controller;
 
 import com.dgmf.bean.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +82,20 @@ public class StudentController {
                 .id(studentId)
                 .firstName(studentFirstName)
                 .lastName(studentLastName)
+                .build();
+
+        return student;
+    }
+
+    // Rest API that handles POST Request
+    // Rest API that handles HTTP Post Request - Creating new resource
+    @PostMapping("/students/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Student createStudent(@RequestBody Student studentDTO) {
+        Student student = Student.builder()
+                .id(studentDTO.getId())
+                .firstName(studentDTO.getFirstName())
+                .lastName(studentDTO.getLastName())
                 .build();
 
         return student;

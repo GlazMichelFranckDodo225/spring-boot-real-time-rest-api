@@ -116,4 +116,11 @@ public class StudentController {
 
         return student;
     }
+
+    // Rest API that handles HTTP DELETE Request - Deleting existing resource
+    // {id} ==> URI Template variables
+    @DeleteMapping("/students/{id}/delete")
+    public String deleteStudent(@PathVariable("id") Long studentId) {
+        return "Student with id " + studentId + " Deleted Successfully";
+    }
 }

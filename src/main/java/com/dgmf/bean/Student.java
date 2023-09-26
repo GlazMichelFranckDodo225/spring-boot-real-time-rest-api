@@ -1,6 +1,5 @@
 package com.dgmf.bean;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

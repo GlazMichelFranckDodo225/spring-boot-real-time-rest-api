@@ -100,4 +100,20 @@ public class StudentController {
 
         return student;
     }
+
+    // Rest API that handles HTTP PUT Request - Updating existing resource
+    // {id} ==> URI Template variables
+    @PutMapping("/students/{id}/update")
+    public Student updateStudent(
+            @PathVariable("id") Long studentId,
+            @RequestBody Student studentRequested
+    ) {
+        Student student = Student.builder()
+                .id(studentId)
+                .firstName(studentRequested.getFirstName())
+                .lastName(studentRequested.getLastName())
+                .build();
+
+        return student;
+    }
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController // @Controller + @ResponseBody
+@RequestMapping("api/v1/students")
 public class StudentController {
     // Rest API that handles GET Request with ResponseEntity
     // GET Request: http://localhost:8080/student
